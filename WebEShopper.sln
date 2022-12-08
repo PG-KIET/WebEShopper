@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebEShopper", "WebEShopper.csproj", "{AEF9C2FC-226C-43F1-A873-BB10568D904E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEF9C2FC-226C-43F1-A873-BB10568D904E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF9C2FC-226C-43F1-A873-BB10568D904E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF9C2FC-226C-43F1-A873-BB10568D904E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF9C2FC-226C-43F1-A873-BB10568D904E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36B93214-8584-4D5A-9EB2-9175FE7B2A3C}
+	EndGlobalSection
+EndGlobal

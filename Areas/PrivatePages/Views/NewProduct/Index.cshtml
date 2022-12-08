@@ -1,0 +1,195 @@
+﻿
+@{
+    ViewBag.Title = "Đăng bài báo";
+}
+<link rel="stylesheet" href="~/Content/edit/css/froala_editor.css">
+<link rel="stylesheet" href="~/Content/edit/css/froala_style.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/code_view.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/colors.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/emoticons.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/image_manager.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/image.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/line_breaker.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/table.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/char_counter.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/video.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/fullscreen.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/file.css">
+<link rel="stylesheet" href="~/Content/edit/css/plugins/quick_insert.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+
+<style>
+
+    div#editor {
+        width: 95%;
+        margin: auto;
+        text-align: left;
+        padding-bottom: 10px;
+    }
+
+    .ss {
+        background-color: red;
+    }
+</style>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Hình minh họa</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div>
+                        <img class="img-fluid" src="~/images/home/girl2.jpg" />
+                    </div>
+                    <label for="exampleInputFile">File input</label>
+                    <div class="input-group">
+                        <input name="file" id="exampleFile" type="file" class="form-control-file">
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <!--Right column-->
+        <div class="col-md-6">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Thông tin chính</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên sản phẩm</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nhập tên sản phẩm">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ndtt">nội dung tóm tắt</label>
+                            <textarea rows="5" class="form-control" placeholder="Nội dung tóm tắt không được quá 100 chữ"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Giá bán</label>
+                                    <input type="text" class="form-control" placeholder="VND">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- select -->
+                                <div class="form-group">
+                                    <label>Đơn vị tính</label>
+                                    <select class="form-control">
+                                        <option>Cái</option>
+                                        <option>Bộ</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Khuyến mãi</label>
+                                    <input type="text" class="form-control" placeholder="VD: 10%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Ngày đăng</label>
+                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Người đăng</label>
+                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Loại sản phẩm</label>
+                                    <select class="form-control">
+                                        <option>Laptop</option>
+                                        <option>Card màn hình</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- /.card-body -->
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Mô tả sản phẩm</h3>
+                </div>
+                <div id="editor">
+                    <div id='edit' style="margin-top: 30px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+
+<script type="text/javascript" src="~/Content/edit/js/froala_editor.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/align.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/char_counter.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/code_beautifier.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/code_view.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/colors.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/draggable.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/emoticons.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/entities.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/file.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/font_size.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/font_family.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/fullscreen.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/image.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/image_manager.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/line_breaker.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/inline_style.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/link.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/lists.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/paragraph_format.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/paragraph_style.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/quick_insert.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/quote.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/table.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/save.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/url.min.js"></script>
+<script type="text/javascript" src="~/Content/edit/js/plugins/video.min.js"></script>
+
+<script>
+    const editor = new FroalaEditor("#edit")
+</script>
