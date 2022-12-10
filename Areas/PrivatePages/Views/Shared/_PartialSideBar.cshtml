@@ -2,80 +2,74 @@
 <ul class="sidebar-menu do-nicescrol">
     <li class="sidebar-header">CHUNG</li>
     <li>
-        <a href="~/privatepages/dashboard">
+        <a href='@Url.Action("Index", "Dashboard")'>
             <i class="zmdi zmdi-view-dashboard"></i> <span>Thông tin chung</span>
         </a>
     </li>
-
-    @*<li>
-            <a href="icons.html">
-                <i class="zmdi zmdi-invert-colors"></i> <span>UI Icons</span>
-            </a>
-        </li>*@
     <li class="sidebar-header">BÀI VIẾT</li>
     <li>
-        <a href="@Url.Action("Index", "NewArticle")">
+        <a href='@Url.Action("Index", "NewArticle")'>
             <i class="zmdi zmdi-invert-colors"></i> <span>Đăng bài viết</span>
         </a>
     </li>
     <li>
-        <a href="@Url.Action("Index", "Article")">
+        <a href='@Url.Action("Index", "Article")'>
             <i class="zmdi zmdi-format-list-bulleted"></i> <span>Danh sách bài viết</span>
         </a>
     </li>
     <li class="sidebar-header">SẢN PHẨM</li>
     <li>
-        <a href="@Url.Action("Index", "ListPost")">
+        <a href='@Url.Action("Index", "ListPost")'>
             <i class="zmdi zmdi-group"></i> <span>Loại sản phẩm</span>
         </a>
     </li>
     <li>
-        <a href="@Url.Action("Index", "NewProduct")">
+        <a href='@Url.Action("Index", "NewProduct")'>
             <i class="zmdi zmdi-grid"></i> <span>Đăng sản phẩm</span>
         </a>
     </li>
 
     <li>
-        <a href="@Url.Action("Index", "ListProduct")">
+        <a href='@Url.Action("Index", "ListProduct")'>
             <i class="zmdi zmdi-desktop-mac"></i> <span>Tất cả sản phẩm</span>
         </a>
     </li>
     <li>
-        <a href="@Url.Action("Index", "ListProductActive")">
+        <a href='@Url.Action("Index", "ListProductActive")'>
             <i class="zmdi zmdi-desktop-mac"></i> <span>Sản phẩm đã duyệt</span>
         </a>
     </li>
     <li>
-        <a href="@Url.Action("Index", "ListProductInactive")">
+        <a href='@Url.Action("Index", "ListProductInactive")'>
             <i class="zmdi zmdi-desktop-mac"></i> <span>Sản phẩm chưa duyệt</span>
         </a>
     </li>
     <li class="sidebar-header">KHÁCH HÀNG</li>
 
     <li>
-        <a href="@Url.Action("Index", "Customer")">
+        <a href='@Url.Action("Index", "Customer")'>
             <i class="zmdi zmdi-face"></i> <span>Thông tin khách hàng</span>
         </a>
     </li>
     <li class="sidebar-header">ĐƠN HÀNG</li>
 
     <li>
-        <a href="@Url.Action("Index", "Orders")">
+        <a href='@Url.Action("Index", "Orders")'>
             <i class="zmdi zmdi-archive"></i> <span>Đơn hàng mới</span>
         </a>
     </li>
     <li>
-        <a href="@Url.Action("Index", "OrdersProcessing")">
+        <a href='@Url.Action("Index", "OrdersProcessing")'>
             <i class="zmdi zmdi-spinner"></i> <span>Đơn hàng đang xử lý</span>
         </a>
     </li>
     <li>
-        <a href="@Url.Action("Index", "OrdersDelivery")">
+        <a href='@Url.Action("Index", "OrdersDelivery")'>
             <i class="zmdi zmdi-truck"></i> <span>Đơn hàng đang giao</span>
         </a>
     </li>
     <li>
-        <a href="@Url.Action("Index", "OrdersDone")">
+        <a href='@Url.Action("Index", "OrdersDone")'>
             <i class="zmdi zmdi-check-square"></i> <span>Đơn hàng đã hoàn thành</span>
         </a>
     </li>

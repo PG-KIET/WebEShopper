@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -139,10 +147,50 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginPrivateController.cs" />
+    <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductDetailController.cs" />
+    <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\baiViet.cs">
+      <DependentUpon>EShopOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\ctDonHang.cs">
+      <DependentUpon>EShopOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\donHang.cs">
+      <DependentUpon>EShopOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EShopOnline.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EShopOnline.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EShopOnline.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EShopOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EShopOnline.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EShopOnline.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\khachHang.cs">
+      <DependentUpon>EShopOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\loaiSP.cs">
+      <DependentUpon>EShopOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sanPham.cs">
+      <DependentUpon>EShopOnline.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\taiKhoanTV.cs">
+      <DependentUpon>EShopOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -862,12 +910,26 @@
     <Content Include="Content\edit\js\third_party\image_tui.min.js" />
     <Content Include="Content\edit\js\third_party\showdown.min.js" />
     <Content Include="Content\edit\js\third_party\spell_checker.min.js" />
+    <Content Include="Content\favicon.ico" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Login\css\bootstrap.min.css" />
+    <Content Include="Content\Login\css\bootstrap\mixins\_border-radius.css" />
+    <Content Include="Content\Login\css\bootstrap\mixins\_screen-reader.css" />
+    <Content Include="Content\Login\css\bootstrap\mixins\_transition.css" />
+    <Content Include="Content\Login\css\bootstrap\mixins\_visibility.css" />
+    <Content Include="Content\Login\css\bootstrap\utilities\_stretched-link.css" />
+    <Content Include="Content\Login\css\bootstrap\_media.css" />
+    <Content Include="Content\Login\css\style.css" />
+    <Content Include="Content\Login\images\bg-1.jpg" />
+    <Content Include="Content\Login\index.html" />
+    <Content Include="Content\Login\js\bootstrap.min.js" />
+    <Content Include="Content\Login\js\jquery.min.js" />
+    <Content Include="Content\Login\js\main.js" />
+    <Content Include="Content\Login\js\popper.js" />
     <Content Include="Content\main.css" />
     <Content Include="Content\prettyPhoto.css" />
     <Content Include="Content\price-range.css" />
     <Content Include="Content\responsive.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -915,6 +977,7 @@
     <Content Include="images\home\sale.png" />
     <Content Include="images\home\searchicon.png" />
     <Content Include="images\home\shipping.jpg" />
+    <Content Include="images\login\background.jpg" />
     <Content Include="images\product-details\1.jpg" />
     <Content Include="images\product-details\new.jpg" />
     <Content Include="images\product-details\rating.png" />
@@ -929,6 +992,16 @@
     <Content Include="images\shop\product7.jpg" />
     <Content Include="images\shop\product8.jpg" />
     <Content Include="images\shop\product9.jpg" />
+    <Content Include="Models\EShopOnline.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EShopOnline.edmx</DependentUpon>
+      <LastGenOutput>EShopOnline.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EShopOnline.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EShopOnline.edmx</DependentUpon>
+      <LastGenOutput>EShopOnline.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\contact.js" />
@@ -951,6 +1024,19 @@
     <Content Include="Areas\PrivatePages\Views\OrdersDone\Index.cshtml" />
     <Content Include="Areas\PrivatePages\Views\OrdersDelivery\Index.cshtml" />
     <Content Include="Areas\PrivatePages\Views\OrdersProcessing\Index.cshtml" />
+    <Content Include="Content\Login\css\.DS_Store" />
+    <Content Include="Content\Login\css\bootstrap\.DS_Store" />
+    <Content Include="Content\Login\css\bootstrap\mixins\.DS_Store" />
+    <Content Include="Content\Login\fonts\.DS_Store" />
+    <Content Include="Content\Login\images\.DS_Store" />
+    <Content Include="Content\Login\js\.DS_Store" />
+    <EntityDeploy Include="Models\EShopOnline.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EShopOnline.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EShopOnline.edmx.diagram">
+      <DependentUpon>EShopOnline.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -993,11 +1079,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\SignIn\Index.cshtml" />
+    <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Views\LoginPrivate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\PrivatePages\Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Clients\assets\fonts\fontawesome-webfont.eot" />
@@ -1030,6 +1118,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
