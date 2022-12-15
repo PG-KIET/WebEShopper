@@ -985,13 +985,6 @@
     <Content Include="images\product-details\similar1.jpg" />
     <Content Include="images\product-details\similar2.jpg" />
     <Content Include="images\product-details\similar3.jpg" />
-    <Content Include="images\shop\advertisement.jpg" />
-    <Content Include="images\shop\product10.jpg" />
-    <Content Include="images\shop\product11.jpg" />
-    <Content Include="images\shop\product12.jpg" />
-    <Content Include="images\shop\product7.jpg" />
-    <Content Include="images\shop\product8.jpg" />
-    <Content Include="images\shop\product9.jpg" />
     <Content Include="Models\EShopOnline.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EShopOnline.edmx</DependentUpon>

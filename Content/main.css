@@ -1593,7 +1593,7 @@ h2.title {
 	font-weight: 700;
 }
 .product-overlay h2{
-	color: #fff;
+	color: #f00;
 	font-family: 'Roboto', sans-serif;
 	font-size: 24px;
 	font-weight: 700;
@@ -1658,10 +1658,11 @@ h2.title {
 
 
 .product-overlay p{
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #211f9f;
+	
 }
 
 
@@ -2873,7 +2874,7 @@ h2.title {
 .rating-area ul li {
   float: left;
   padding: 5px;
-  font-size: 12px
+  font-size: 12px;
 }
 
 .rating-area .ratings {

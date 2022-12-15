@@ -19,6 +19,17 @@ namespace WebEShopper.Models
 			return sp;
 		}
 
+		public static List<sanPham> GetSanPhamsbyId(int maLoai)
+		{
+			List<sanPham> sp = new List<sanPham>();
+
+			DbContext context = new DbContext("name=BanHangOnlineConnect");
+
+			sp = context.Set<sanPham>().Where(x => x.maLoai == maLoai).ToList<sanPham>();
+
+			return sp;
+		}
+
 		public static List<loaiSP> GetCategories() {
 			List<loaiSP> lsp = new List<loaiSP>();
 
