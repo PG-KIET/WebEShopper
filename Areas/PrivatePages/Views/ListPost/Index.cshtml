@@ -1,9 +1,17 @@
-﻿
+﻿@using WebEShopper.Models
+@model WebEShopper.Models.loaiSP
 @{
     ViewBag.Title = "Index";
+    List<loaiSP> list = ViewData["dsloai"] as List<loaiSP>;
 }
+<style>
+    form{
+        display:inline;
+    }
+</style>
+
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-7">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Chủng loại</h5>
@@ -19,24 +27,58 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>Thời trang</td>
-                                <td>29</td>
-                                <td>
-                                    <button class="btn btn-danger">Xóa</button>
-                                    <button class="btn btn-success ">Sửa</button>
-                                </td>
-                            </tr>
+                            @foreach (loaiSP i in list)
+                            {
+                                <tr>
+                                    <td>@i.maLoai</td>
+                                    <td>@i.loaiSP1</td>
+                                    <td>@i.sanPhams.Where(x => x.maLoai == i.maLoai).Count() </td>
+                                    <td>
+                                        @using (Html.BeginForm("detele", "ListPost", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="ml" value="@i.maLoai" />
+                                            <button class="btn btn-danger">Xóa</button>
+                                        }
+                                        @using (Html.BeginForm("update", "ListPost", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="mlcs" value="@i.maLoai" />
+                                            <button class="btn btn-success ">Sửa</button>
+                                        }
+                                    </td>
+                                </tr>
+                               
+                            }
 
                         </tbody>
                     </table>
                 </div>
-                <div class="mt-3">
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Thêm</button>
-                </div>
             </div>
         </div>
+    </div>
+    <div class="col-lg-5">
+        @using (Html.BeginForm("index", "ListPost", FormMethod.Post))
+        {
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Thêm Chủng Loại</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tên Chủng Loại</label>
+                        @Html.TextBoxFor(m => m.loaiSP1, new { @class = "form-control", @placeholder = "Name of category" })
+                    </div>
+                    <div class="form-group">
+                        <label style="padding-top:18px">Diễn giải cho loại hàng</label>
+                        @Html.TextAreaFor(m => m.ghiChu, new { @class = "form-control", @rows = "11", @placeholder = "Description of category" })
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Lưu Thông tin</button>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            @Html.HiddenFor(x => x.maLoai)
+        }
     </div>
 </div>
 

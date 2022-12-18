@@ -14,7 +14,7 @@ namespace WebEShopper.Models
 
 			DbContext context = new DbContext("name=BanHangOnlineConnect");
 
-			sp = context.Set<sanPham>().ToList<sanPham>();
+			sp = context.Set<sanPham>().OrderByDescending(z => z.ngayDang).ToList<sanPham>();
 
 			return sp;
 		}
@@ -25,7 +25,7 @@ namespace WebEShopper.Models
 
 			DbContext context = new DbContext("name=BanHangOnlineConnect");
 
-			sp = context.Set<sanPham>().Where(x => x.maLoai == maLoai).ToList<sanPham>();
+			sp = context.Set<sanPham>().Include(cat => cat.loaiSP).Where(x => x.maLoai == maLoai).OrderByDescending(z => z.ngayDang).ToList<sanPham>();
 
 			return sp;
 		}
@@ -38,6 +38,17 @@ namespace WebEShopper.Models
 			lsp = context.Set<loaiSP>().ToList<loaiSP>();
 
 			return lsp;
+		}
+
+		public static List<sanPham> GetSanPhamsrandom()
+		{
+			List<sanPham> sp = new List<sanPham>();
+
+			DbContext context = new DbContext("name=BanHangOnlineConnect");
+
+			sp = context.Set<sanPham>().OrderBy(p => Guid.NewGuid()).Take(3).ToList<sanPham>();
+
+			return sp;
 		}
 	}
 }

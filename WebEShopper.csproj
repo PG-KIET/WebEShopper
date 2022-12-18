@@ -148,9 +148,9 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginPrivateController.cs" />
+    <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProductDetailController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -985,6 +985,17 @@
     <Content Include="images\product-details\similar1.jpg" />
     <Content Include="images\product-details\similar2.jpg" />
     <Content Include="images\product-details\similar3.jpg" />
+    <Content Include="images\shop\advertisement.jpg" />
+    <Content Include="images\shop\product1.jpg" />
+    <Content Include="images\shop\product10.jpg" />
+    <Content Include="images\shop\product2.jpg" />
+    <Content Include="images\shop\product3.jpg" />
+    <Content Include="images\shop\product4.jpg" />
+    <Content Include="images\shop\product5.jpg" />
+    <Content Include="images\shop\product6.jpg" />
+    <Content Include="images\shop\product7.jpg" />
+    <Content Include="images\shop\product8.jpg" />
+    <Content Include="images\shop\product9.jpg" />
     <Content Include="Models\EShopOnline.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EShopOnline.edmx</DependentUpon>
