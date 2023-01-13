@@ -4,15 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebsiteE_Shopper.Controllers
+namespace WebEShopper.Controllers
 {
-    public class CartController : Controller
+    public class CheckoutController : Controller
     {
-        // GET: Cart
+        // GET: Checkout
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }

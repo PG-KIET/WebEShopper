@@ -118,12 +118,12 @@
                         int n = 1;
                         foreach (sanPham sp in Common.GetSanPhams())
                         {
-                            <div class="col-xl-4 col-lg-4 col-md-6" style="height:370px">
+                            <div class="col-xl-4 col-lg-4 col-md-6" style="height:380px">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
                                             <a href="@Url.Action("index", "ProductDetail", new { MaSanPham = sp.maSP })">
-                                                <img src="@sp.hinhDD" alt="sản phẩm" />
+                                                <img src="@sp.hinhDD" alt="sản phẩm" style="height:170.33px" class="img-responsive" />
                                                 <h2>@String.Format("{0:#,### đ}", sp.giaBan) </h2>
                                                 <p style="height: 60px">@sp.tenSP</p>
                                             </a>

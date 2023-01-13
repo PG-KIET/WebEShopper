@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebEShopper.Models;
 
 namespace WebEShopper.Controllers
 {
@@ -14,16 +15,20 @@ namespace WebEShopper.Controllers
         {
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(string Account , string Password)
-        {
-            bool isAuthentic = (Account != null && Password != null && Account.Equals("giakietpham.2003@gmail.com") && Password.Equals("123456"));
-            if (isAuthentic)
-            {
-                return RedirectToAction("Index" , "Dashboard" , new { Area = "PrivatePages"});
-            }
-            return View();
-        }
-    }
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Index(string Account, string Password)
+		{
+			taiKhoanTV ttdn = new BanHangOnlineConnect()
+							.taiKhoanTVs.Where(x => x.taiKhoan.Equals(Account.ToLower().Trim()) && x.matKhau.Equals(Password)).First<taiKhoanTV>();
+			bool isAuthentic = ttdn != null;
+			if (isAuthentic)
+			{
+				Session["TtDangNhap"] = ttdn;
+				return RedirectToAction("Index", "Dashboard", new { Area = "PrivatePages" });
+			}
+			return View();
+		}
+	}
 }

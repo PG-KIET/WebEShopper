@@ -141,10 +141,12 @@
     <Compile Include="Areas\PrivatePages\Controllers\OrdersDeliveryController.cs" />
     <Compile Include="Areas\PrivatePages\Controllers\OrdersDoneController.cs" />
     <Compile Include="Areas\PrivatePages\Controllers\OrdersProcessingController.cs" />
+    <Compile Include="Areas\PrivatePages\Models\ThuongDung.cs" />
     <Compile Include="Areas\PrivatePages\PrivatePagesAreaRegistration.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogDetailController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginPrivateController.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="Models\baiViet.cs">
       <DependentUpon>EShopOnline.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\ctDonHang.cs">
       <DependentUpon>EShopOnline.tt</DependentUpon>
@@ -197,6 +200,7 @@
   <ItemGroup>
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstap\bootstrap.min.css" />
+    <Content Include="Content\cart.css" />
     <Content Include="Content\Clients\assets\css\animate.css" />
     <Content Include="Content\Clients\assets\css\app-style.css" />
     <Content Include="Content\Clients\assets\css\bootstrap.css" />
@@ -1008,6 +1012,7 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cart.js" />
     <Content Include="Scripts\contact.js" />
     <Content Include="Scripts\gmaps.js" />
     <Content Include="Scripts\html5shiv.js" />
@@ -1078,7 +1083,6 @@
     <Content Include="Views\ProductDetail\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Web.config" />
@@ -1086,6 +1090,8 @@
     <Content Include="Views\SignIn\Index.cshtml" />
     <Content Include="Views\SignUp\Index.cshtml" />
     <Content Include="Views\LoginPrivate\Index.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Shared\_Categories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

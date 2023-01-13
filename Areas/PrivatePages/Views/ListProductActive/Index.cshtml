@@ -1,7 +1,16 @@
-﻿
+﻿@using WebEShopper.Models
+@model WebEShopper.Models.sanPham
 @{
     ViewBag.Title = "Index";
+    List<sanPham> list = ViewData["dssanpham"] as List<sanPham>;
 }
+
+<style>
+    form{
+        display:inline;
+    }
+</style>
+
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -21,20 +30,36 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>01112003</td>
-                                <td>
-                                    <img src="~/images/shop/product11.jpg" alt="..." class="img-thumbnail" style="max-width:100px" />
-                                </td>
-                                <td>Gái</td>
-                                <td>Phò</td>
-                                <td>500000</td>
-                                <td>
-                                    <button class="btn btn-danger">Xóa</button>
-                                    <button class="btn btn-primary">Vô hiệu</button>
-                                    <button class="btn btn-success">Sửa</button>
-                                </td>
-                            </tr>
+                            @foreach (sanPham i in list)
+                            {
+                                <tr>
+                                    <td>@i.maSP</td>
+                                    <td>
+                                        <img src="@i.hinhDD" alt="..." class="img-thumbnail" style="max-width:100px" />
+                                    </td>
+                                    <td>@i.tenSP</td>
+                                    <td>@i.maLoai</td>
+                                    <td>@i.giaBan</td>
+                                    <td>
+                                        @using (Html.BeginForm("detele", "ListProductActive", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="ml" value="@i.maSP" />
+                                            <button class="btn btn-danger">Xóa</button>
+                                        }
+                                        @using (Html.BeginForm("Active", "ListProductActive", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="mlvh" value="@i.maSP" />
+                                            <button class="btn btn-primary">Vô hiệu</button>
+                                        }
+
+                                        @using (Html.BeginForm("index", "ListProduct", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="mlcs" value="@i.maSP" />
+                                            <button class="btn btn-success ">Sửa</button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
 
                         </tbody>
                     </table>

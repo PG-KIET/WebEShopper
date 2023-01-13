@@ -1,0 +1,39 @@
+﻿@using WebEShopper.Models;
+
+@{
+    BanHangOnlineConnect dBContext = new BanHangOnlineConnect();
+    List<loaiSP> ListLoaiSPs = dBContext.loaiSPs.ToList();
+}
+
+<div class="left-sidebar">
+    <h2>Category</h2>
+    <div class="panel-group category-products" id="accordian">
+        <!--category-productsr-->
+            @foreach (var item in ListLoaiSPs)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="@Url.Action("index", "Product", new { maloai = item.maLoai })">@item.loaiSP1</a>
+                        </h4>
+                    </div>
+                </div>
+            }
+    </div><!--/category-products-->
+
+
+    <div class="price-range">
+        <!--price-range-->
+        <h2>Price Range</h2>
+        <div class="well text-center">
+            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="30000000" data-slider-step="50000" data-slider-value="[0,100000]" id="sl2"><br />
+            <b class="pull-left">0 đ</b> <b class="pull-right">30,000,000 đ</b>
+        </div>
+    </div><!--/price-range-->
+
+    <div class="shipping text-center">
+        <!--shipping-->
+        <img src="~/images/home/shipping.jpg" alt="" />
+    </div><!--/shipping-->
+
+</div>

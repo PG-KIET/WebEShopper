@@ -1,3 +1,9 @@
-﻿@{
+﻿@using WebEShopper.Models;
+@{
+    taiKhoanTV x = Session["TtDangNhap"] as taiKhoanTV;
+    if(x == null)
+    {
+        Response.Redirect("~/LoginPrivate");
+    }
     Layout = "~/Areas/PrivatePages/Views/Shared/_Layout.cshtml";
 }

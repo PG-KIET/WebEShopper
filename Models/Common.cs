@@ -19,7 +19,7 @@ namespace WebEShopper.Models
 			return sp;
 		}
 
-		public static List<sanPham> GetSanPhamsbyId(int maLoai)
+		public static List<sanPham> GetSanPhamsbyId(int maLoai = 1)
 		{
 			List<sanPham> sp = new List<sanPham>();
 
