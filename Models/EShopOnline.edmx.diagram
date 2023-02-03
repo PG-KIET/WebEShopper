@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="BanHangOnlineDataModel.loaiSP" Width="1.5" PointX="5.5" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BanHangOnlineDataModel.sanPham" Width="1.5" PointX="7.375" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BanHangOnlineDataModel.taiKhoanTV" Width="1.5" PointX="1" PointY="5.375" IsExpanded="true" />
-        <AssociationConnector Association="BanHangOnlineDataModel.FK__baiViet__maLoai__4BAC3F29" ManuallyRouted="false" />
         <AssociationConnector Association="BanHangOnlineDataModel.FK__baiViet__taiKhoa__4CA06362" ManuallyRouted="false" />
         <AssociationConnector Association="BanHangOnlineDataModel.FK__ctDonHang__maSP__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="BanHangOnlineDataModel.FK__ctDonHang__soDH__4E88ABD4" ManuallyRouted="false" />

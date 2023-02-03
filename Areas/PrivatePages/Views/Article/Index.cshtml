@@ -1,7 +1,14 @@
-﻿
+﻿@using WebEShopper.Models;
 @{
     ViewBag.Title = "Index";
+    List<baiViet> ds = ViewData["DanhSachBV"] as List<baiViet>;
 }
+
+<style>
+    form {
+        display: inline;
+    }
+</style>
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -11,31 +18,46 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Mã bài viết</th>
                                 <th scope="col">Tên bài viết</th>
                                 <th scope="col">Ngày đăng</th>
                                 <th scope="col">Tài khoản</th>
-                                <th scope="col">đã duyệt</th>
                                 <th scope="col">Nhóm Lệnh</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>Xu hướng thời trang</td>
-                                <td>01/11/2023</td>
-                                <td>henry1219</td>
-                                <td>true</td>
-                                <td>
-                                    <button class="btn btn-danger">Xóa</button>
-                                    <button class="btn btn-primary">Vô hiệu</button>
-                                    <button class="btn btn-success">Sửa</button>
-                                </td>
-                            </tr>
+                            @{
+                                foreach (baiViet i in ds)
+                                {
+                                    <tr>
+                                        <td>@i.tenBV</td>
+                                        <td>@string.Format("{0: hh:mm [dd/MM/yyyy]}" , i.ngayDang)</td>
+                                        <td>@i.taiKhoanTV.hoDem @i.taiKhoanTV.tenTV</td>
+                                        <td>
+                                            @using (Html.BeginForm("Detele", "Article", FormMethod.Post))
+                                            {
+                                                <input type="hidden" name="maBaiViet" value="@i.maBV" />
+                                                <button class="btn btn-danger">Xóa</button>
+                                            }
+                                            @using (Html.BeginForm("Active", "Article", FormMethod.Post))
+                                            {
+                                                <input type="hidden" name="maBaiViet" value="@i.maBV" />
+                                                <button class="btn btn-primary">@ViewBag.tdcuanut</button>
+                                            }
+
+                                            @using (Html.BeginForm("Index", "NewArticle", FormMethod.Post))
+                                            {
+                                                <input type="hidden" name="maBaiViet" value="@i.maBV" />
+                                                <button class="btn btn-success ">Sửa</button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
 
                         </tbody>
-                    </table>
+                        </table>
                 </div>
             </div>
         </div>

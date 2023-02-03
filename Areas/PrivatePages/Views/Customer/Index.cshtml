@@ -1,6 +1,8 @@
-﻿
+﻿@using WebEShopper.Models
+@model WebEShopper.Models.khachHang
 @{
     ViewBag.Title = "Index";
+    List<khachHang> list = ViewData["dskhachhang"] as List<khachHang>;
 }
 <div class="row">
     <div class="col-lg-12">
@@ -15,51 +17,21 @@
                                 <th scope="col">Số điện thoại</th>
                                 <th scope="col">Tên khách hàng</th>
                                 <th scope="col">Địa chỉ</th>
-                                <th scope="col">lần mua</th>
                                 <th scope="col">email</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
-                                <td>01</td>
-                                <td>0932448830</td>
-                                <td>Phạm Gia Kiệt</td>
-                                <td>Phạm Đức Sơn, Q8, TP.HCM</td>
-                                <td>12</td>
-                                <td>giakietpham.2003@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>02</td>
-                                <td>0932448830</td>
-                                <td>Phạm Gia Kiệt</td>
-                                <td>Phạm Đức Sơn, Q8, TP.HCM</td>
-                                <td>12</td>
-                                <td>giakietpham.2003@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>03</td>
-                                <td>0932448830</td>
-                                <td>Phạm Gia Kiệt</td>
-                                <td>Phạm Đức Sơn, Q8, TP.HCM</td>
-                                <td>12</td>
-                                <td>giakietpham.2003@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>04</td>
-                                <td>0932448830</td>
-                                <td>Phạm Gia Kiệt</td>
-                                <td>Phạm Đức Sơn, Q8, TP.HCM</td>
-                                <td>12</td>
-                                <td>giakietpham.2003@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>05</td>
-                                <td>0932448830</td>
-                                <td>Phạm Gia Kiệt</td>
-                                <td>Phạm Đức Sơn, Q8, TP.HCM</td>
-                                <td>12</td>
-                                <td>giakietpham.2003@gmail.com</td>
+                                @foreach (khachHang i in list)
+                                {
+                                    <td>@i.maKH</td>
+                                    <td>@i.soDT</td>
+                                    <td>@i.tenKH</td>
+                                    <td>@i.diaChi</td>
+                                    <td>@i.email</td>
+                                }
+
                             </tr>
                         </tbody>
                     </table>

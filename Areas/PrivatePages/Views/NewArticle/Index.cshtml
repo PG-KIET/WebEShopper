@@ -1,107 +1,99 @@
-﻿
+﻿@model WebEShopper.Models.baiViet
 @{
     ViewBag.Title = "Đăng bài báo";
 }
 
 <div class="container-fluid">
-    <div class="row">
-        <!-- left column -->
-        <div class="col-md-8">
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Thông tin chính</h3>
-                </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form role="form">
+    @using (Html.BeginForm("index", "NewArticle", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-8">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Thông tin chính</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên bài viết</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Tên bài viết">
+                            @Html.TextBoxFor(x => x.tenBV, new { @class = "form-control", @id = "exampleInputEmail1", @placeholder = "Tên bài viết" })
                         </div>
-
                         <div class="form-group">
                             <label for="ndtt">nội dung tóm tắt</label>
-                            <textarea rows="5" class="form-control" placeholder="Nội dung tóm tắt không được quá 100 chữ"></textarea>
+                            @Html.TextAreaFor(x => x.ndTomTat, new { @class = "form-control", @rows = "5", @placeholder = "Nội dung tóm tắt không được quá 100 chữ" })
+
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Ngày đăng</label>
-                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                    @Html.TextBoxFor(x => x.ngayDang, new { @class = "form-control", @disabled = "disabled" })
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Người đăng</label>
-                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                    @Html.TextBoxFor(x => x.taiKhoan, new { @class = "form-control", @disabled = "disabled" })
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Kiểm duyệt bài viết</label>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+            <!--Right column-->
+            <div class="col-md-4">
+                <div class="card card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title">Hình minh Họa</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <img class="img-fluid" src="@ViewBag.ddHinh" />
+                        <label for="exampleInputFile">File input</label>
+                        <div class="input-group">
+                            <input name="HinhDaiDien" id="exampleFile" type="file" class="form-control-file">
                         </div>
                     </div>
                     <!-- /.card-body -->
-
-
-                </form>
-            </div>
-        </div>
-        <!--Right column-->
-        <div class="col-md-4">
-            <div class="card card-warning">
-                <div class="card-header">
-                    <h3 class="card-title">General Elements</h3>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <img class="img-fluid" src="~/images/home/girl2.jpg" />
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                        <input name="file" id="exampleFile" type="file" class="form-control-file">
+            </div>
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Thông tin chính</h3>
+                    </div>
+                    <div class="mb-3" style="padding:20px">
+                        @Html.TextAreaFor(x => x.noiDung, new
+                    {
+                        @class = "textarea",
+                        @placeholder = "Nhập nội dung",
+                        @id = "VungSoanThao",
+                        @style = "width:100%; height:300px; font-size:14px; line-height:18px;" +
+                        " border:1px solid #dddddd; padding:10px"
+                    })
+
                     </div>
                 </div>
-                <!-- /.card-body -->
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <!-- left column -->
-        <div class="col-md-12">
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Thông tin chính</h3>
-                </div>
-                <div class="mb-3" style="padding:20px">
-                    @Html.TextAreaFor(x => x.noiDung, new{ @class = "text-area",@placeholder = "Nhập nội dung",
-                                                            @style = "width:100%; height:300px; font-size:14px; line-height:18px;" +
-                                                            " border:1px solid #dddddd; padding:10px" })
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+        
+    }
 </div>
 
 <script src="https://cdn.tiny.cloud/1/rbryz10wqu7cpapvpqxf5rlekmi7bx5gft601easufsp6wxf/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
-        selector: 'textarea',
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [
-            { value: 'First.Name', title: 'First Name' },
-            { value: 'Email', title: 'Email' },
-        ]
+        selector: 'textarea#VungSoanThao',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
     });
 </script>

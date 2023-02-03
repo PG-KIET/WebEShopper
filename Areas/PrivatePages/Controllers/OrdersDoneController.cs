@@ -11,6 +11,7 @@ namespace WebEShopper.Areas.PrivatePages.Controllers
         // GET: PrivatePages/OrdersDone
         public ActionResult Index()
         {
+
             return View();
         }
     }

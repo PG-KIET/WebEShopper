@@ -17,7 +17,6 @@ namespace WebEShopper.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public loaiSP()
         {
-            this.baiViets = new HashSet<baiViet>();
             this.sanPhams = new HashSet<sanPham>();
         }
     
@@ -25,8 +24,6 @@ namespace WebEShopper.Models
         public string loaiSP1 { get; set; }
         public string ghiChu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<baiViet> baiViets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sanPham> sanPhams { get; set; }
     }

@@ -10,7 +10,8 @@
 namespace WebEShopper.Models
 {
     using System;
-    using System.Collections.Generic;
+	using System.Web.Mvc;
+	using System.Collections.Generic;
     
     public partial class baiViet
     {
@@ -19,12 +20,12 @@ namespace WebEShopper.Models
         public string hinhDD { get; set; }
         public string ndTomTat { get; set; }
         public Nullable<System.DateTime> ngayDang { get; set; }
-        public string noiDung { get; set; }
+		[AllowHtml]
+		public string noiDung { get; set; }
         public string taiKhoan { get; set; }
         public Nullable<bool> daDuyet { get; set; }
-        public Nullable<int> maLoai { get; set; }
+        public string loaiTin { get; set; }
     
-        public virtual loaiSP loaiSP { get; set; }
         public virtual taiKhoanTV taiKhoanTV { get; set; }
     }
 }

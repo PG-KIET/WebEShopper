@@ -65,5 +65,12 @@ namespace WebEShopper.Models
 			DbContext context = new DbContext("name=BanHangOnlineConnect");
 			return context.Set<sanPham>().Find(maSP).hinhDD;
 		}
+		public static List<baiViet> GetArticles(int n) 
+		{
+			List<baiViet> l = new List<baiViet>();
+			BanHangOnlineConnect db = new BanHangOnlineConnect();
+			l = db.baiViets.OrderByDescending(a => a.ngayDang).Take(n).ToList<baiViet>();
+			return l;
+		}
 	}
 }

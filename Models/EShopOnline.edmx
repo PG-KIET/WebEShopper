@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BanHangOnlineDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BanHangOnlineDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="baiViet">
           <Key>
             <PropertyRef Name="maBV" />
@@ -17,7 +17,7 @@
           <Property Name="noiDung" Type="nvarchar" MaxLength="4000" />
           <Property Name="taiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="daDuyet" Type="bit" />
-          <Property Name="maLoai" Type="int" />
+          <Property Name="loaiTin" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="ctDonHang">
           <Key>
@@ -100,18 +100,6 @@
           <Property Name="ghiChu" Type="ntext" />
           <Property Name="maKH" Type="varchar" MaxLength="10" />
         </EntityType>
-        <Association Name="FK__baiViet__maLoai__4BAC3F29">
-          <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="0..1" />
-          <End Role="baiViet" Type="Self.baiViet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="loaiSP">
-              <PropertyRef Name="maLoai" />
-            </Principal>
-            <Dependent Role="baiViet">
-              <PropertyRef Name="maLoai" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__baiViet__taiKhoa__4CA06362">
           <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
           <End Role="baiViet" Type="Self.baiViet" Multiplicity="*" />
@@ -216,10 +204,6 @@
           <EntitySet Name="loaiSP" EntityType="Self.loaiSP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sanPham" EntityType="Self.sanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="taiKhoanTV" EntityType="Self.taiKhoanTV" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__baiViet__maLoai__4BAC3F29" Association="Self.FK__baiViet__maLoai__4BAC3F29">
-            <End Role="loaiSP" EntitySet="loaiSP" />
-            <End Role="baiViet" EntitySet="baiViet" />
-          </AssociationSet>
           <AssociationSet Name="FK__baiViet__taiKhoa__4CA06362" Association="Self.FK__baiViet__taiKhoa__4CA06362">
             <End Role="taiKhoanTV" EntitySet="taiKhoanTV" />
             <End Role="baiViet" EntitySet="baiViet" />
@@ -253,8 +237,7 @@
             <End Role="taiKhoanTV" EntitySet="taiKhoanTV" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BanHangOnlineDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -270,9 +253,8 @@
           <Property Name="noiDung" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="taiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="daDuyet" Type="Boolean" />
-          <Property Name="maLoai" Type="Int32" />
-          <NavigationProperty Name="loaiSP" Relationship="Self.FK__baiViet__maLoai__4BAC3F29" FromRole="baiViet" ToRole="loaiSP" />
           <NavigationProperty Name="taiKhoanTV" Relationship="Self.FK__baiViet__taiKhoa__4CA06362" FromRole="baiViet" ToRole="taiKhoanTV" />
+          <Property Name="loaiTin" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ctDonHang">
           <Key>
@@ -325,7 +307,6 @@
           <Property Name="maLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="loaiSP1" Type="String" MaxLength="88" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ghiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="baiViets" Relationship="Self.FK__baiViet__maLoai__4BAC3F29" FromRole="loaiSP" ToRole="baiViet" />
           <NavigationProperty Name="sanPhams" Relationship="Self.FK__sanPham__maLoai__52593CB8" FromRole="loaiSP" ToRole="sanPham" />
         </EntityType>
         <EntityType Name="sanPham">
@@ -371,18 +352,6 @@
           <NavigationProperty Name="khachHang" Relationship="Self.FK_taiKhoanTV_khachHang" FromRole="taiKhoanTV" ToRole="khachHang" />
           <NavigationProperty Name="sanPhams" Relationship="Self.FK__sanPham__taiKhoa__534D60F1" FromRole="taiKhoanTV" ToRole="sanPham" />
         </EntityType>
-        <Association Name="FK__baiViet__maLoai__4BAC3F29">
-          <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="0..1" />
-          <End Role="baiViet" Type="Self.baiViet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="loaiSP">
-              <PropertyRef Name="maLoai" />
-            </Principal>
-            <Dependent Role="baiViet">
-              <PropertyRef Name="maLoai" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__baiViet__taiKhoa__4CA06362">
           <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
           <End Role="baiViet" Type="Self.baiViet" Multiplicity="*" />
@@ -487,10 +456,6 @@
           <EntitySet Name="loaiSPs" EntityType="Self.loaiSP" />
           <EntitySet Name="sanPhams" EntityType="Self.sanPham" />
           <EntitySet Name="taiKhoanTVs" EntityType="Self.taiKhoanTV" />
-          <AssociationSet Name="FK__baiViet__maLoai__4BAC3F29" Association="Self.FK__baiViet__maLoai__4BAC3F29">
-            <End Role="loaiSP" EntitySet="loaiSPs" />
-            <End Role="baiViet" EntitySet="baiViets" />
-          </AssociationSet>
           <AssociationSet Name="FK__baiViet__taiKhoa__4CA06362" Association="Self.FK__baiViet__taiKhoa__4CA06362">
             <End Role="taiKhoanTV" EntitySet="taiKhoanTVs" />
             <End Role="baiViet" EntitySet="baiViets" />
@@ -533,6 +498,7 @@
           <EntitySetMapping Name="baiViets">
             <EntityTypeMapping TypeName="BanHangOnlineDataModel.baiViet">
               <MappingFragment StoreEntitySet="baiViet">
+                <ScalarProperty Name="loaiTin" ColumnName="loaiTin" />
                 <ScalarProperty Name="maBV" ColumnName="maBV" />
                 <ScalarProperty Name="tenBV" ColumnName="tenBV" />
                 <ScalarProperty Name="hinhDD" ColumnName="hinhDD" />
@@ -541,7 +507,6 @@
                 <ScalarProperty Name="noiDung" ColumnName="noiDung" />
                 <ScalarProperty Name="taiKhoan" ColumnName="taiKhoan" />
                 <ScalarProperty Name="daDuyet" ColumnName="daDuyet" />
-                <ScalarProperty Name="maLoai" ColumnName="maLoai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
