@@ -50,5 +50,20 @@ namespace WebEShopper.Models
 
 			return sp;
 		}
+		public static sanPham GetProductbyId(string maSP)
+		{
+			DbContext context = new DbContext("name=BanHangOnlineConnect");
+			return context.Set<sanPham>().Find(maSP);
+		}
+		public static string getNameOfProductbyId(string maSP)
+		{
+			DbContext context = new DbContext("name=BanHangOnlineConnect");
+			return context.Set<sanPham>().Find(maSP).tenSP;
+		}
+		public static string getImageOfProductbyId(string maSP)
+		{
+			DbContext context = new DbContext("name=BanHangOnlineConnect");
+			return context.Set<sanPham>().Find(maSP).hinhDD;
+		}
 	}
 }

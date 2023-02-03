@@ -28,10 +28,15 @@
                                 <span>
                                     <label>Quantity:</label>
                                     <input type="text" value="3" />
-                                    <button type="button" class="btn btn-fefault cart">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        Add to cart
-                                    </button>
+                                    @using (Html.BeginForm("AddToCart", "Home", FormMethod.Post))
+                                            {
+                                                <input name="maSP" type="hidden" value="@i.maSP" />
+                                                <button class="btn btn-default add-to-cart">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Thêm vào giỏ hàng
+                                                </button>
+
+                                            }
                                 </span>
                             </div>
                             <p>@i.ndTomTat</p>

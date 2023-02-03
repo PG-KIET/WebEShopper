@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebEShopper.Models;
 
 namespace WebEShopper
 {
@@ -21,6 +22,8 @@ namespace WebEShopper
 		protected void Session_Start(object sender, EventArgs e)
 		{
 			Session["TtDangNhap"] = null;
+			Session["GioHang"] = new Cart();
 		}
+		
 	}
 }

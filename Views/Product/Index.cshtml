@@ -30,13 +30,21 @@
                                                 <h2>@String.Format("{0:#,### đ}", item.giaBan) </h2>
                                                 <p style="height: 60px">@item.tenSP</p>
                                             </a>
-                                            <a href="@Url.Action("index" , "Cart", new {masp = @item.maSP})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            @using (Html.BeginForm("AddToCart", "Home", FormMethod.Post))
+                                            {
+                                                <input name="maSP" type="hidden" value="@item.maSP" />
+                                                <button class="btn btn-default add-to-cart">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Thêm vào giỏ hàng
+                                                </button>
+
+                                            }
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                            }
+                                            }
                     <div class="row" id="results"></div>
 
                     <div class="loading">

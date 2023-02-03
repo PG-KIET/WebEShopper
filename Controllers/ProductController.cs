@@ -10,13 +10,15 @@ namespace WebsiteE_Shopper.Controllers
 {
     public class ProductController : Controller
 	{
-		public ActionResult Index(int loaisp = 1)
+		BanHangOnlineConnect DbContext = new BanHangOnlineConnect();
+
+		public ActionResult Index(int categoryId = 1)
 		{
-			BanHangOnlineConnect dbcontext = new BanHangOnlineConnect();
-			List<sanPham> ListSanPhams = dbcontext.sanPhams
-										 .Include(cat => cat.loaiSP)
-										 .Where(pro => pro.maLoai == loaisp).ToList();
-			return View(ListSanPhams);
+
+			List<sanPham> Listproducts = DbContext.sanPhams
+							.Include(cat => cat.loaiSP)
+							.Where(pro => pro.maLoai == categoryId).ToList();
+			return View(Listproducts);
 		}
 	}
 }

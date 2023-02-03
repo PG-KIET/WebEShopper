@@ -1,8 +1,20 @@
-﻿
+﻿@using WebEShopper.Models;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Cart x = ViewData["Cart"] as Cart;
+
 }
+<style>
+    .cart_product img{
+        height:90px;
+        width:120px;
+
+    }
+    .cart_description h4 a{
+        font-size:16px;
+    }
+</style>
 
 <section id="cart_items">
     <div class="container">
@@ -25,82 +37,51 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="~/images/cart/one.png" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
+                    @{
+                        foreach (ctDonHang i in x.SanPhamDC.Values)
+                        {
+                            <tr>
+                                <td class="cart_product">
+                                    <a href=""><img src="@Common.getImageOfProductbyId(i.maSP)" alt=""></a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a href="">@Common.getNameOfProductbyId(i.maSP)</a></h4>
+                                    <p>Mã sản phẩm: @i.maSP</p>
+                                </td>
+                                <td class="cart_price">
+                                    <p>@String.Format("{0:#,##0 đ}", i.giaBan)</p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        @using (Html.BeginForm("Increase", "Cart", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="maSP" value="@i.maSP" />
+                                            <button class="cart_quantity_up"> + </button>
+                                        }
 
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="~/images/cart/two.png" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="~/images/cart/three.png" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
+                                        <input class="cart_quantity_input" type="text" name="quantity" value="@i.soLuong" autocomplete="off" size="2">
+                                        @using (Html.BeginForm("Decrease", "Cart", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="maSP" value="@i.maSP" />
+                                            <button class="cart_quantity_down"> - </button>
+                                        }
+                                    </div>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">@String.Format("{0:#,##0 đ}", x.moneyOfOneItem(i))</p>
+                                </td>
+                                <td class="cart_delete">
+                                    @using (Html.BeginForm("RemoveItem", "Cart", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="maSP" value="@i.maSP" />
+                                        <button class="cart_quantity_delete"> <i class="fa fa-times"></i> </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+
+
                 </tbody>
             </table>
         </div>
@@ -116,12 +97,12 @@
             <div class="col-sm-12">
                 <div class="total_area">
                     <ul>
-                        <li>Tổng trị giá <span>$59</span></li>
-                        <li>Thuế VAT 10% <span>$2</span></li>
+                        <li>Tổng trị giá <span>@String.Format("{0:#,##0 đ}", x.totalOfCart())</span></li>
+                        <li>Thuế VAT 5% <span>@String.Format("{0:#,##0 đ}", (x.totalOfCart() * 5) / 100)</span></li>
                         <li>Chi phí vận chuyển<span> Miễn phí</span></li>
-                        <li>Tổng thành tiền <span>$61</span></li>
+                        <li>Tổng thành tiền <span>@String.Format("{0:#,##0 đ}", x.totalOfCart() + (x.totalOfCart() * 5) / 100)</span></li>
                     </ul>
-                    <a class="btn btn-default update" href="">Cập nhật</a>
+                    <a class="btn btn-default update" href="@Url.Action("index", "Home")">Cập nhật</a>
                     <a class="btn btn-default check_out" href="@Url.Action("index", "Checkout")">Thanh Toán</a>
                 </div>
             </div>

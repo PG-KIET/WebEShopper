@@ -14,7 +14,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a href="@Url.Action("index", "Product", new { maloai = item.maLoai })">@item.loaiSP1</a>
+                            @Html.ActionLink(item.loaiSP1, "Index", "Product", new { categoryID = item.maLoai }, null)
                         </h4>
                     </div>
                 </div>
